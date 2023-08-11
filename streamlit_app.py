@@ -55,7 +55,6 @@ except URLError as e :
 
 streamlit.header("Fruit load list contains :")
 
-
 def get_fruit_load_list():
     with my_cnx.cursor() as my_cur:
         my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
@@ -74,3 +73,4 @@ streamlit.write('The user added ', fruit_toadd)
 
 if streamlit.button('Add fruit to load list') and fruit_toadd != '':
     insert_fruit(fruit_toadd)
+    streamlit.text('Thanks adding {fruit_toadd}')
