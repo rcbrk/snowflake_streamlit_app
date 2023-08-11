@@ -58,7 +58,7 @@ streamlit.header("Fruit load list contains :")
 def get_fruit_load_list():
     with my_cnx.cursor() as my_cur:
         my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
-        return(my_cur.fetchall())
+        return my_cur.fetchall()
 
 def insert_fruit(ft):
     with my_cnx.cursor() as my_cur:
@@ -66,7 +66,7 @@ def insert_fruit(ft):
     
 if streamlit.button('Get fruit load list'):
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-    streamlit.dataframe(get_fruit_load_list)
+    streamlit.dataframe(get_fruit_load_list())
 
 fruit_toadd = streamlit.text_input('What fruit would you like to add ?')
 streamlit.write('The user added ', fruit_toadd)
